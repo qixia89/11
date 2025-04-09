@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>牧雀云AI数字人使用指南 | 官方教程</title>
+    <meta name="description" content="牧雀云AI数字人系统操作指南，助您快速掌握电商带货全流程">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --primary-light: #e0fbfc;
+            --secondary: #f72585;
+            --accent: #4cc9f0;
+            --text: #2b2d42;
+            --text-secondary: #8d99ae;
+            --divider: #edf2f4;
+            --background: #f8f9fa;
+            --white: #ffffff;
+            --radius: 10px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+            padding: 0;
+            margin: 0;
+            -webkit-text-size-adjust: 100%;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 电脑端适配 */
+        @media (min-width: 992px) {
+            body {
+                padding: 30px 0;
+            }
+            .container {
+                background-color: var(--white);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                padding: 40px;
+                margin: 0 auto;
+                position: relative;
+                overflow: hidden;
+            }
+            .container::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 8px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+            }
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 1.8rem 0 1.2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 2rem 0 1.2rem;
+            padding-left: 0.8rem;
+            border-left: 5px solid var(--primary);
+            position: relative;
+        }
+
+        h2::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 5px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 1.8rem 0 1rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        h3::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 1.5rem 0 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h4::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        p {
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        /* 提示框 */
+        .tip-box {
+            background-color: var(--primary-light);
+            border-radius: var(--radius);
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+            border-left: 4px solid var(--primary);
+        }
+
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            left: 1.2rem;
+            top: 1.2rem;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .tip-box p {
+            margin: 0.6rem 0;
+            color: var(--text);
+        }
+
+        /* 步骤列表 */
+        .step-list {
+            list-style-type: none;
+            margin: 1.2rem 0;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 2.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(67, 97, 238, 0.3);
+        }
+
+        /* 媒体容器 */
+        .media-container {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 0;
+            margin: 1.5rem auto;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            max-width: 500px; /* 限制最大宽度 */
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .media-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .media-container video, 
+        .media-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        /* 小尺寸媒体容器 */
+        .media-container.small {
+            max-width: 350px;
+        }
+
+        /* 极小尺寸媒体容器 */
+        .media-container.xsmall {
+            max-width: 280px;
+        }
+
+        .media-caption {
+            padding: 0.8rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            background-color: var(--divider);
+        }
+
+        /* 视频列布局 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (min-width: 480px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 步骤卡片 */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .step-content {
+            padding: 1.2rem;
+        }
+
+        .step-content p {
+            margin: 0.6rem 0;
+        }
+
+        /* 图片网格 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        @media (min-width: 480px) {
+            .image-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 懒加载效果 */
+        .lazyload {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .lazyloaded {
+            opacity: 1;
+        }
+
+        /* 装饰元素 */
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(76,201,240,0.1) 0%, rgba(76,201,240,0) 70%);
+            z-index: -1;
+        }
+
+        /* 实用类 */
+        .text-center {
+            text-align: center;
+        }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <!-- 装饰元素 -->
+    <div class="decoration" style="top: 10%; left: 5%;"></div>
+    <div class="decoration" style="top: 30%; right: 5%; width: 150px; height: 150px;"></div>
+    <div class="decoration" style="bottom: 20%; left: 10%; width: 80px; height: 80px;"></div>
+
+    <div class="container">
+        <!-- 头部 -->
+        <h1>牧雀云AI数字人小程序使用指南</h1>
+
+        <!-- 前言模块 -->
+        <div class="card">
+            <div class="tip-box">
+                <p><strong>前言：</strong>牧雀云AI数字人小程序是一款能让成熟带货达人工作效率翻倍提升、小白不踩坑就能实现电商带货的实用性工具！</p>
+                <p>本教程将从数字人板块、视频成片板块、插件功能、热品货盘板块等四个方面进行功能拆解，以便让大家快速上手软件</p>
+            </div>
+            
+            <div class="tip-box" style="background-color: #f8f0fc; border-left-color: #b5179e;">
+                <p><strong>使用提示：</strong></p>
+                <p>📱 为了后续快速进入小程序，您可以把小程序添加到手机桌面</p>
+                <p>📱 手机上视频如果不全屏展示，请双击视频</p>
+            </div>
+            
+            <h3 class="text-center">添加小程序到桌面</h3>
+            <div class="video-grid">
+                <div>
+                    <h4>iOS添加教程</h4>
+                    <div class="media-container small">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/IOS.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">iOS系统添加桌面教程</div>
+                    </div>
+                </div>
+                <div>
+                    <h4>安卓添加教程</h4>
+                    <div class="media-container small">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E6%B7%BB%E5%8A%A0%E6%A1%8C%E9%9D%A2.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">安卓系统添加桌面教程</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数字人模块 -->
+        <div class="card">
+            <h2>第一部分：数字人板块</h2>
+            
+            <div class="media-container">
+                <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/1280X1280.PNG" 
+                     class="lazyload" 
+                     alt="数字人板块预览图">
+                <div class="media-caption">数字人板块界面截图</div>
+            </div>
+
+            <h3>形象克隆指南</h3>
+            <ul class="step-list">
+                <li>完全免费：目前小程序克隆形象免费，且不限制克隆个数</li>
+                <li>急速建模：只需要录制一个10-30秒左右的视频即可</li>
+            </ul>
+            
+            <h4>视频教程</h4>
+            <div class="media-container xsmall">
+                <video controls style="width: 100%; aspect-ratio: 9/16;">
+                    <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%BD%A2%E8%B1%A1%E5%85%8B%E9%9A%86-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                </video>
+                <div class="media-caption">形象克隆操作演示</div>
+            </div>        
+
+            <h3>声音克隆指南</h3>
+            <ul class="step-list">
+                <li>三种音源模式：自主录音/视频提取/本地MP3</li>
+                <li>完全免费：不限制克隆个数</li>
+                <li>注意：录制时要语速连贯平稳、吐字清晰、用普通话</li>
+            </ul>
+            
+            <h4>视频教程</h4>
+            <div class="media-container xsmall">
+                <video controls style="width: 100%; aspect-ratio: 9/16;">
+                    <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                </video>
+                <div class="media-caption">声音克隆操作演示</div>
+            </div>
+        </div>
+
+        <!-- 视频制作模块 -->
+        <div class="card">
+            <h2>第二部分：视频成片板块</h2>
+            <p>视频成片板块主要包含数字人口播、AI批量成片、溶图视频、数字人成片等功能，可根据这四个功能自由组合获得当前主流的视频效果</p>
+            
+            <div class="media-container">
+                <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/1.PNG" 
+                     class="lazyload" 
+                     alt="视频界面示意图">
+                <div class="media-caption">视频成片板块界面</div>
+            </div>
+            
+            <h3>数字人口播视频</h3>
+            <div class="video-grid">
+                <div>
+                    <h4>纯口播模式</h4>
+                    <p>克隆形象直接根据文案口播</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E6%95%B0%E5%AD%97%E5%8F%A3%E6%92%AD-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">纯口播模式操作演示</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4>绿幕合成模式</h4>
+                    <p>给克隆的形象添加视频作为背景进行输出（克隆的形象录制时需要绿幕）</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E8%A7%86%E9%A2%91%E8%83%8C%E6%99%AF-%E8%A7%86%E9%A2%91.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">绿幕合成操作演示</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>AI批量成片</h3>
+            <ul class="step-list">
+                <li>批量输出最多10个视频</li>
+                <li>支持本地产品素材上传</li>
+                <li>合成方式详解：</li>
+                <li>素材拼接：适合单个素材2-6秒左右的视频合成，直接把你上传的素材进行拼接</li>
+                <li>素材抽取：适合单个素材时长较长的视频合成（6秒以上），会根据你的设置（假设2-3秒），从素材里抽取（2-3秒）进行视频合成</li>
+            </ul>
+            
+            <div class="media-container small">
+                <video controls style="width: 100%; aspect-ratio: 9/16;">
+                    <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E6%89%B9%E9%87%8F%E8%BE%93%E5%87%BA-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                </video>
+                <div class="media-caption">批量成片操作演示</div>
+            </div>
+
+            <h3>溶图视频</h3>
+            <p>建议组合使用口播视频和产品素材</p>
+            
+            <div class="media-container xsmall">
+                <video controls style="width: 100%; aspect-ratio: 9/16;">
+                    <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E6%BA%B6%E5%9B%BE-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                </video>
+                <div class="media-caption">溶图视频操作演示</div>
+            </div>
+               
+            <h3>数字人成片</h3>
+            <p>支持更多高级参数调整</p>
+            
+            <div class="media-container xsmall">
+                <video controls style="width: 100%; aspect-ratio: 9/16;">
+                    <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E6%95%B0%E5%AD%97%E5%88%9B%E4%BD%9C-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                </video>
+                <div class="media-caption">数字人成片操作演示</div>
+            </div>
+        </div>
+
+        <!-- 插件功能模块 -->
+        <div class="card">
+            <h2>第三部分：小程序插件库</h2>
+            <p>牧雀云小程序给大家提供了丰富的插件功能，例如去水印和文案提取都是创作神器，后续会继续更新更多主流的插件，满足大家的需求。</p>
+            
+            <div class="media-container">
+                <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/2.png" 
+                     class="lazyload" 
+                     alt="插件功能全景图">
+                <div class="media-caption">插件库界面概览</div>
+            </div>
+
+            <div class="video-grid">
+                <div>
+                    <h4>AI文案神器</h4>
+                    <p>能满足大家对于文案创作的需求，例如文案改写、写原创文案等</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/AI%E6%96%87%E6%A1%88-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">AI文案操作演示</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>智能去水印</h4>
+                    <p>多平台水印移除</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%8E%BB%E6%B0%B4%E5%8D%B0-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">去水印操作演示</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-grid">
+                <div>
+                    <h4>AI视频去重</h4>
+                    <p>提升过审概率</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%8E%BB%E9%87%8D-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">视频去重操作演示</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>爆款文案提取</h4>
+                    <p>一键提取视频文案</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E6%96%87%E6%A1%88%E6%8F%90%E5%8F%96.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">文案提取操作演示</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-grid">
+                <div>
+                    <h4>视频裁剪</h4>
+                    <p>主流尺寸调整</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E8%A7%86%E9%A2%91%E8%A3%81%E5%89%AA-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">视频裁剪操作演示</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>视频切片</h4>
+                    <p>按时长/镜头分割</p>
+                    <div class="media-container xsmall">
+                        <video controls style="width: 100%; aspect-ratio: 9/16;">
+                            <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%88%87%E7%89%87-%E8%BE%93%E5%87%BA.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">视频切片操作演示</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 电商运营模块 -->
+        <div class="card">
+            <h2>第四部分：热品货盘版块</h2>
+            <p>牧雀云小程序内置抖音、快手热品货盘榜单，如果小白没有任何选品经验、不知道选什么品或者达人缺少推品，都可以选用货盘内的产品，货盘每天10点稳定更新。</p>
+            
+            <div class="media-container">
+                <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/74ebb677-e386-46a7-a995-665576262bd4.png" 
+                     class="lazyload" 
+                     alt="货盘界面图">
+                <div class="media-caption">热品货盘界面</div>
+            </div>
+ 
+            <h3>如何将货盘商品上架到橱窗？</h3>
+            <p>前提：抖音开通带货橱窗、快手开通快手小店。</p>
+
+            <h3>七步上架流程</h3>
+            <div class="steps-grid">
+                <!-- 步骤1 -->
+                <div class="step-card">
+                    <div class="media-container small">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/afd6567e-9d72-479a-9ccf-ca0d43a8f882.png" 
+                             class="lazyload" 
+                             alt="步骤1">
+                    </div>
+                    <div class="step-content">
+                        <p><strong>第一步：</strong>选定平台，选定品类，选好要加入橱窗带货的商品</p>
+                    </div>
+                </div>
+
+                <!-- 步骤2 -->
+                <div class="step-card">
+                    <div class="media-container small">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/e7a446f4-0ebd-4ed1-9b34-8e8413479acb.png" 
+                             class="lazyload" 
+                             alt="步骤2">
+                    </div>
+                    <div class="step-content">
+                        <p><strong>第二步：</strong>打开AI文案，生成一段80-150字左右的爆款文案，复制文案</p>
+                    </div>
+                </div>
+
+                <!-- 步骤3 -->
+                <div class="step-card">
+                    <div class="media-container small">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/34936b57-24eb-454b-b8e8-3554c38bb18f.png" 
+                             class="lazyload" 
+                             alt="步骤3">
+                    </div>
+                    <div class="step-content">
+                        <p><strong>第三步：</strong>以纸巾为例，点击进入，智能选择好素材，进入批量成片</p>
+                    </div>
+                </div>
+
+                <!-- 步骤4 -->
+                <div class="step-card">
+                    <div class="media-container small">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/9034ce1a-851e-4473-9086-bd52dc5accfb.png" 
+                             class="lazyload" 
+                             alt="步骤4">
+                    </div>
+                    <div class="step-content">
+                        <p><strong>第四步：</strong>把复制的文案粘贴进内容框，选择好配音，选择好合成方式，选择生成数量，提交生成即可</p>
+                    </div>
+                </div>
+
+                <!-- 步骤5 -->
+                <div class="step-card">
+                    <div class="media-container small">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/de5744d1-392a-4ae3-81e0-d312193e653f.png" 
+                             class="lazyload" 
+                             alt="步骤5">
+                    </div>
+                    <div class="step-content">
+                        <p><strong>第五步：</strong>在我的作品下载你满意的视频素材进行发布</p>
+                    </div>
+                </div>
+
+                <!-- 步骤6 -->
+                <div class="step-card">
+                    <div class="media-container small">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/eb1c9e41-a51e-4685-8fb2-b801a8bb410d.png" 
+                             class="lazyload" 
+                             alt="步骤6">
+                    </div>
+                    <div class="step-content">
+                        <p><strong>第六步：</strong>作品保存到相册，复制此款商品的链接，打开抖音，将其加入选拼车，发布到橱窗</p>
+                    </div>
+                </div>
+
+                <!-- 步骤7 -->
+                <div class="step-card">
+                    <h4>第七步：抖音上架流程（快手同样步骤）</h4>
+                    <div class="image-grid">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/20bd00e4-1d16-4033-9c01-19740010ba5e.png" 
+                             class="lazyload" 
+                             alt="步骤7-1">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/7ba76c32-a26e-4c87-a8ff-718c34e7f5f8.png" 
+                             class="lazyload" 
+                             alt="步骤7-2">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/31c6bd0b-51fa-47b5-805e-2d562d66f09c.png" 
+                             class="lazyload" 
+                             alt="步骤7-3">
+                        <img data-src="http://stiuq2b2h.hn-bkt.clouddn.com/my-pic-gallery/2d854e2c-42bb-471c-acf0-0b658ece1938%20%281%29.png" 
+                             class="lazyload" 
+                             alt="步骤7-4">
+                    </div>
+                </div>
+            </div>
+
+            <h3>视频挂载小黄车教程</h3>
+            <div class="media-container small">
+                <h4>视频如何挂载小黄车？</h4>
+                
+                <div style="margin-bottom: 1rem;">
+                    <p><strong>1. 发布视频如何挂在小黄车？</strong></p>
+                    <video controls style="width: 100%; aspect-ratio: 9/16;">
+                        <source src="http://stiuq2b2h.hn-bkt.clouddn.com/my-video-archive/%E5%8F%91%E5%B8%83%E8%A7%86%E9%A2%91%E5%A6%82%E4%BD%95%E6%8C%82%E8%BD%BD%E5%B0%8F%E9%BB%84%E8%BD%A6%EF%BC%9F.mp4" type="video/mp4">
+                    </video>
+                    <div class="media-caption">发布视频挂载小黄车</div>
+                </div>
+                
+                <div>
+                    <p><strong>2. 已发布视频如何挂载小黄车？</strong></p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; padding: 0.5rem 0;">
+                        根据最新规则，已发布的视频无法直接挂载小黄车，可以在作品权限处重新编辑，添加评论区置顶链接进行转化
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 懒加载脚本 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 懒加载实现
+            const lazyLoadInstances = [].slice.call(document.querySelectorAll('.lazyload'));
+            
+            if ("IntersectionObserver" in window) {
+                let lazyObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyElement = entry.target;
+                            if (lazyElement.dataset.src) {
+                                lazyElement.src = lazyElement.dataset.src;
+                            }
+                            lazyElement.classList.add("lazyloaded");
+                            lazyObserver.unobserve(lazyElement);
+                        }
+                    });
+                }, {
+                    rootMargin: "200px 0px" // 提前200px加载
+                });
+
+                lazyLoadInstances.forEach(function(lazyElement) {
+                    lazyObserver.observe(lazyElement);
+                });
+            } else {
+                // 不支持IntersectionObserver时的回退方案
+                lazyLoadInstances.forEach(function(lazyElement) {
+                    if (lazyElement.dataset.src) {
+                        lazyElement.src = lazyElement.dataset.src;
+                    }
+                    lazyElement.classList.add("lazyloaded");
+                });
+            }
+            
+            // 视频全屏处理
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('dblclick', function() {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
